@@ -1,0 +1,16 @@
+
+User-agent: *
+
+
+Disallow: /neighborhood_reports/active_design_health/canarsie_flatlands/
+
+Disallow: /categories/
+
+Disallow: /
+
+Disallow: /neighborhood_reports/housing_and_health/canarsie_flatlands/
+
+Disallow: /neighborhood_reports/
+
+Disallow: /tags/
+

@@ -1,0 +1,49 @@
+
+<div>
+  <p><a href="#" data-toggle="modal" data-target="#modal-{{ .count }}{{.rank}}{{ .id }}">{{ .ind.indicator_short_name }} ({{ .ind.indicator_neighborhood_rank }}/42)</a></p>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-{{ .count }}{{.rank}}{{ .id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">{{ .ind.indicator_name }}</h4>
+          <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+            <span class="fas fa-times-circle"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{ .ind.indicator_description }}</p>
+          
+          <h5 class="mt-4">Neighborhood Comparison</h5>
+          <ul>
+            <li>{{ .location }}: {{ .ind.unmodified_data_value_geo_entity }}</li>
+            <li>{{ .borough }}: {{ .ind.unmodified_data_value_borough }}</li>
+            <li>New York City: {{ .ind.data_value_nyc }}</li>
+          </ul>
+
+          <div style="width:100%; height:25vmin; z-index:10000;" id="summary-{{ .count }}{{.rank}}{{ .id }}"></div> 
+          
+          <h5 class="mt-4">Trend</h5>
+          <div style="width:100%; height:25vmin; z-index:10000;" id="trend-{{ .count }}{{.rank}}{{ .id }}"></div> 
+          
+          <p class="fs-sm mt-5"><em>Source: {{ htmlUnescape .ind.source_description }}</em></p>
+
+
+        </div>
+        <!-- .modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<script type="text/javascript">
+  $( "#modal-{{ .count }}{{.rank}}{{ .id }}" ).on('shown.bs.modal', function() {
+    var opt = {"renderer": "svg"};
+    vegaEmbed("#summary-{{ .count }}{{.rank}}{{ .id }}", buildSummarySpec(NeighborhoodName,"{{.ind.indicator_data_name}}"),opt).then().catch(console.error);
+    vegaEmbed("#trend-{{ .count }}{{.rank}}{{ .id }}", buildTrendSpec(NeighborhoodName,"{{.ind.indicator_data_name}}"),opt).then().catch(console.error);
+  });
+</script>

@@ -1,0 +1,34 @@
+{{ define "main" }}
+<!-- Add your custom image class below (replace 'oculus' with your own custom class) -->
+<div class="bg-primary banner-with-background oculus d-flex flex-column">
+
+  <div class="container my-auto">
+      <div class="narrow my-3">
+          <h1 class="display-4 text-white">
+            {{ .Params.title }}
+            <span class="d-block fs-md">{{ .Params.tagline }}</span>
+          </h1>
+
+      </div>
+  </div>
+  <!-- .container -->
+
+</div>
+<!-- .banner-with-background -->
+
+<article class="container overflow-hidden" id="primary-content">
+
+  <div class="my-5">
+    <div class="narrow my-4">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p>
+        Malesuada dapibus ac condimentum habitasse a praesent commodo penatibus parturient duis pretium
+        et dolor parturient cum. Est vehicula facilisis ad proin condimentum pretium augue accumsan
+        sapien
+        potenti non vestibulum aptent non cum ullamcorper fusce tincidunt class scelerisque facilisi mi
+        dictumst porttitor.
+      </p>
+    </div>
+  </div>
+</article>
+{{ end }}

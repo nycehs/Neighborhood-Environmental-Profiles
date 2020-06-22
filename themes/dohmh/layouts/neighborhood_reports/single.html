@@ -1,0 +1,98 @@
+{{ define "js_top" }}
+<!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+<!-- Import vega-embed -->
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+{{ end }}
+
+{{ define "main" }}
+
+<div class="py-5 bg-secondary text-primary mx-n2">
+  <div class="container">
+      <div class="my-auto">
+          <h1 class="display-4 text-white">{{ .Params.title }}</h1>
+      </div>
+  </div>
+</div>
+
+{{ range (index .Site.Data.reports $.Params.data_json) }}
+
+<script>
+  var NeighborhoodName = "{{ .geo_entity_name }}"; //setting for use in visualizations
+</script>
+
+<section class="container overflow-hidden" id="primary-content">
+  <div class="my-5">
+    <h2>About This Report</h2>
+    <p>{{ .report_description }}</p>
+  </div>
+  <div class="my-5">
+    {{ range $index, $content := .report_content }}
+      {{ $count :=add $index 1 }}
+      {{ $.Scratch.Set "location" .geo_entity_name }}
+      {{ $.Scratch.Set "borough" .borough_name }}
+      <div class="my-5">
+        <h2>{{ .report_topic }}</h2>
+        <p>
+          {{ .report_topic_description }}
+        </p>
+        <div class="row matrix-gutter">
+          
+          <div class="col-md">
+            <div class="card h-100 bg-light">
+              <div class="card-header border-bottom border-dark">Better</div>
+              <div class="card-body">
+                {{ range $index, $content := where .report_topic_data ".data_value_rank" 1  }}
+                {{ $id := add $index 1 }}
+                {{ $location := $.Scratch.Get "location" }}
+                {{ $borough := $.Scratch.Get "borough" }}
+                  {{- partial "report_indicator.html" (dict "location" $location "borough" $borough "ind" . "rank" .data_value_rank "id" $id "count" $count) -}}
+                {{ end }}
+              </div>
+            </div>
+            <!-- .card -->
+          </div>
+          <!-- .col -->
+
+          <div class="col-md">
+            <div class="card h-100 bg-light">
+              <div class="card-header border-bottom border-dark">Middle</div>
+              <div class="card-body">
+                {{ range $index, $content := where .report_topic_data ".data_value_rank" 2  }}
+                {{ $id := add $index 1 }}
+                {{ $location := $.Scratch.Get "location" }}
+                {{ $borough := $.Scratch.Get "borough" }}
+                  {{- partial "report_indicator.html" (dict "location" $location "borough" $borough "ind" . "rank" .data_value_rank "id" $id "count" $count) -}}
+                {{ end }}
+              </div>
+            </div>
+            <!-- .card -->
+          </div>
+          <!-- .col -->
+
+          <div class="col-md">
+            <div class="card h-100 bg-light">
+              <div class="card-header border-bottom border-dark">Worse</div>
+              <div class="card-body">
+                {{ range $index, $content := where .report_topic_data ".data_value_rank" 3  }}
+                {{ $id := add $index 1 }}
+                {{ $location := $.Scratch.Get "location" }}
+                {{ $borough := $.Scratch.Get "borough" }}
+                  {{- partial "report_indicator.html" (dict "location" $location "borough" $borough "ind" . "rank" .data_value_rank "id" $id "count" $count) -}}
+                {{ end }}
+              </div>
+            </div>
+            <!-- .card -->
+          </div>
+          <!-- .col -->
+
+        </div>
+      </div>
+    {{ end }}
+        
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

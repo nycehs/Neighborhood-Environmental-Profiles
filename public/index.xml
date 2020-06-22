@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Environment and Health Neighborhood Reports on Environment &amp; Health Data Portal</title>
+    <link>http://example.org/</link>
+    <description>Recent content in Environment and Health Neighborhood Reports on Environment &amp; Health Data Portal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Active Design and Health: Canarsie - Flatlands</title>
+      <link>http://example.org/neighborhood_reports/active_design_health/canarsie_flatlands/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/neighborhood_reports/active_design_health/canarsie_flatlands/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Housing and Health: Canarsie - Flatlands</title>
+      <link>http://example.org/neighborhood_reports/housing_and_health/canarsie_flatlands/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/neighborhood_reports/housing_and_health/canarsie_flatlands/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

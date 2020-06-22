@@ -1,0 +1,6 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Environment & Health Data Portal"
+enableRobotsTXT = true
+metaDataFormat = "yaml"
+theme = "dohmh"
